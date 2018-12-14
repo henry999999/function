@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .high{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="username" class="username required">
+        <input type="number" name="tel" id="" class="required"><br>
+        <input type="date" name="data" id="" class="required"><br>
+        <input type="datetime" name="datatime" id="" class="required"><br>
+        <input type="text" name="password" class="required password"><br>
+        <input type="text" name="email" id="" required class="required email"><br>
+        <!-- <input type="email" name="email" id="" required class="required email"><br> -->
+        <div class="gj required">123456</div>
+        <input type="button" value="提交" id="btn">
+    </form>
+    <strong class='high' style="display:none;">*</strong>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script>
+         var gth = $(".high");
+        function fn(){
+            // 如果存在required类，则对所有带有required类的元素进行进行非空(必填)校验
+           if($(".required")){
+            $(".required").each(function(){
+                $(this).nextAll(".high").remove();
+                var str = $(this).prop("tagName")=='DIV' ?  $(this).text().trim() : $(this).val().trim();
+                if(str.length==0){
+                    $(this).after( $(".high").eq(0).clone());
+                    $(".high").show();
+                    // 隐藏最后一个警告dom，前提是你将此dom写在了最后，也可写在最前面
+                    $(".high").eq($(".high").length-1).hide();
+                } else  if($(".password")){
+                // 密码校验  如果存在password类，则进行密码校验
+                $(".password").each(function(){
+                      $(this).nextAll(".high").remove();
+                        var password = $(this).prop("tagName")=='DIV' ?  $(this).text().trim() : $(this).val();
+                        var passwordreg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z_*!@#$%]{8,32}$/;
+                        if(!passwordreg.test(password)){
+                            $(this).after($(".high").eq(0).clone());
+                            $(".high").show();
+                            $(".high").eq($(".high").length-1).hide();
+                        }
+                        // else{
+                        //     $(this).nextAll(".high").remove();
+                        // }
+                })
+               
+            }
+            else   if($(".email")){
+                // 邮箱校验  如果存在email类，则进行邮箱校验
+                $(".email").each(function(){
+                    $(this).nextAll(".high").remove();
+                        var emailVal = $(this).prop("tagName")=='DIV' ?  $(this).text().trim() : $(this).val();
+                        var regEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                        if(emailVal.length=0||!regEmail.test(emailVal)){
+                            // $(this).next(".high").remove();
+                            $(this).after($(".high").eq(0).clone());
+                            $(".high").show();
+                            $(".high").eq($(".high").length-1).hide();
+                        }
+                        // else{
+                        //     $(this).nextAll(".high").remove();
+                        // }
+                })
+             }
+                
+            // else{
+            //         $(this).nextAll(".high").remove();
+            //     }
+            }) 
+           }
+           
+         
+             // 输出$(".high"),如果只存在一个（lenght为1），则说明表单数据校验成功  
+             return $(".high");
+        }
+        
+       
+
+       var form = {
+           required:function(dom){
+            var str = dom.prop("tagName")=='DIV' ?  dom.text().trim() : $dom.val().trim();
+            if(str.length==0){
+                   
+                } 
+           }
+       }
+        $("#btn").on("click",function(){
+            console.log(fn());
+            if(fn().length==1){
+                alert(1);
+            }
+           
+        })
+    
+    </script>
+</body>
+</html>
