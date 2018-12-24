@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>乐淘-用户管理</title>
+	<link rel="stylesheet" href="bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<script src="./jquery-3.3.1.min.js"></script>
+	<!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
+	
+    <style>
+body,
+html,
+.aside {
+    height: 100%;
+}
+.aside {
+    overflow: hidden;
+    width: 180px;
+    height: 100%;
+    background: #2f4050;
+    float: left;
+}
+
+.profile {
+    width: 100%;
+    height: 160px;
+    background: #243443;
+    padding-top: 25px;
+}
+
+.profile .avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile .avatar img {
+    display: block;
+    height: 100%;
+}
+
+.aside .profile h4 {
+    color: #a9b0c2;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.aside .navs {
+    padding: 20px 0;
+}
+
+.aside .navs li a+ul {
+    display: none;
+    overflow: hidden;
+}
+
+.aside .navs a {
+    width: 100%;
+    line-height: 1;
+    padding: 12px 20px;
+    margin: 4px 0;
+    color: #a9b0c2;
+    display: block;
+}
+
+.aside .navs a:hover {
+    color: #F6F6F6;
+    background-color: #243443;
+    text-decoration: none;
+}
+
+.aside .navs a+ul a {
+    padding-left: 46px;
+}
+
+.aside .navs .active {
+    color: #F6F6F6;
+    background-color: #243443;
+}
+
+.aside .navs i {
+    margin-right: 8px;
+}
+
+.aside .navs .arrow {
+    float: right;
+}
+
+
+    </style>
+</head>
+<body>
+	
+		<div class="aside">
+			<div class="profile">
+				<div class="avatar img-circle">
+					<img src="images/my_logo.jpg">
+				</div>
+				<h4>张学友</h4>
+			</div>
+			<div class="navs">
+				<ul class="list-unstyled">
+					<li class="active">
+						<a href="javascript:;">
+							<i class="fa fa-user"></i>
+							用户管理
+						</a>
+						<ul class="list-unstyled">
+							<li class="active">
+								<a href="user.html">用户管理</a>
+							</li>
+							<li>
+								<a href="category-second.html">456</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="fa fa-bars"></i>
+							分类管理
+							<i class="fa fa-angle-right"></i>
+						</a>
+						<ul class="list-unstyled">
+							<li>
+								<a href="category-first.html">一级分类管理</a>
+							</li>
+							<li>
+								<a href="category-second.html">二级分类管理</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="fa fa-product-hunt"></i>
+							商品管理
+                        </a>
+                        <ul class="list-unstyled">
+							<li>
+								<a href="category-first.html">一级分类管理</a>
+							</li>
+							<li>
+								<a href="category-second.html">二级分类管理</a>
+							</li>
+						</ul>
+                    </li>
+                    <li>
+                         <a href="javascript:;">
+                             <i class="fa fa-product-hunt"></i>
+                             商品管理
+                         </a>
+                         <ul class="list-unstyled">
+                             <li>
+                                 <a href="category-first.html">一级分类管理</a>
+                             </li>
+                             <li>
+                                 <a href="category-second.html">二级分类管理</a>
+                             </li>
+                         </ul>
+                     </li>
+                        <li>
+                             <a href="javascript:;">
+                                 <i class="fa fa-product-hunt"></i>
+                                 商品管理
+                             </a>
+                             <ul class="list-unstyled">
+                                 <li>
+                                     <a href="category-first.html">一级分类管理</a>
+                                 </li>
+                                 <li>
+                                     <a href="category-second.html">二级分类管理</a>
+                                 </li>
+                             </ul>
+                    </li>
+				</ul>
+			</div>
+		</div>
+		
+	
+    
+    <script>
+        var navLi = $('.navs li')
+        navLi.on('click',function(){
+            $(this).find('ul').slideToggle();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+                var windowHeight = $(window).height(),     
+                $body = $("body");     
+                 $body.css("height", windowHeight);  
+                 $("body").on("touchstart", function(e) {  
+                      e.preventDefault();   
+                 startX = e.originalEvent.changedTouches[0].pageX,  
+                 startY = e.originalEvent.changedTouches[0].pageY;  }); 
+                 $("body").on("touchmove", function(e) {  
+                      e.preventDefault(); 
+                      moveEndX = e.originalEvent.changedTouches[0].pageX,
+                     moveEndY = e.originalEvent.changedTouches[0].pageY, 
+                     X = moveEndX - startX,   Y = moveEndY - startY; 
+                     if ( Math.abs(X) > Math.abs(Y) && X > 30 ) {  
+                            //  alert("left 2 right");  右滑 
+                             $(".left-hidden").css("transform","translateX(0px)");  
+                      }  else if ( Math.abs(X) > Math.abs(Y) && X < -30 ) { 
+                                // alert("right 2 left"); 左滑
+                         $(".left-hidden").css("transform","translateX(-100%)");
+                       
+                      }  else if ( Math.abs(Y) > Math.abs(X) && Y > 0) {  
+                             //   alert("top 2 bottom");  下拉
+                      }  else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
+                                 // alert("bottom 2 top");  上拉
+                       }  else{
+                         //   alert("just touch");  点击
+                    } 
+                    });  
+    
+    </script>
+</body>
+</html>

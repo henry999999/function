@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="mui-scroll">
+        <div class="mui-content mui-content-9rem">
+            <div class="section_card card_search clear padding0">
+                <input type="text" class="mui-input-clear bluefont left fix-lxr-padding search" placeholder="搜索联系人" th:placeholder="#{lxr.list.holder1}" maxlength="50"/>
+                <div class="search-icon"><img src="../../../static/mobile/img/lxr/search.png" width="100%"></div>
+
+            </div>
+            <div class="section_card clear">
+                <ul class="list_ul margin0">
+                    <li class="mui-table-view-cell clear">
+                        <p class="left">aaa</p>
+                        <p class="right num">123</p>
+                    </li>
+                    <li class="mui-table-view-cell clear">
+                        <p class="left">aaa</p>
+                        <p class="right num">abc</p>
+                    </li>
+                    <li class="mui-table-view-cell clear">
+                        <p class="left">aaa</p>
+                        <p class="right num">爱的方式</p>
+                    </li>
+                    <li class="mui-table-view-cell clear">
+                         <p class="left">aaa</p>
+                         <p class="right num">135</p>
+                     </li>
+                </ul>
+            </div>
+
+            <button type="button" class="mui-btn mui-btn-primary btn-blue no-border" id="submit" th:text="#{lxr.list.button2}">下一步</button>
+
+        </div>
+    </div>
+    <script>
+     
+        $(".search").on("keyup",function(e){
+            var str = $(".search").val().trim();
+            $(".num").each(function(index,element){
+            if(element.innerText.indexOf(str)<0){
+                element.parentNode.style.display = "none";
+            }else{
+                element.parentNode.style.display = "block";
+            }
+            })
+        })
+
+    </script>
+</body>
+</html>

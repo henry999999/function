@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .clearfix:after,.clearfix:before{
+   content:".";/*加一段内容*/
+   display:table;/*创建匿名的表格单元，触发bfc*/
+}
+ .clearfix:after{
+   clear:both;/*清除浮动*/
+  }
+ .clearfix{zoom:1;/*为IE6，7的兼容性设置*/}
+</style>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style> 
+            body{background: #fff; font-size: 13px;}
+            #wrap{position: relative;}
+            .product-head h1{font-size: 14px;font-family: Arial, Helvetica, sans-serif;margin-bottom: 3px;margin-left: 3px;}
+            .product-head{font-size: 12px;padding: 4px;background-color: #ccc;width: 235px;}
+            .filterform input{font-size: 15px;padding: 3px;border: 1px solid #999;}
+            li{padding: 5px;margin: 3px;list-style: none;width: 230px;border-top: 1px solid #ccc;}
+            li a{color: #000;font-family: Arial, Helvetica, sans-serif;font-size: 11px}
+            ul{margin: 0;padding: 0;}
+            .clear{clear: both;}
+    </style> 
+</head>
+<body>
+        <div id="wrap">
+                <div class="product-head"> 
+                <h1>Product Search</h1> 
+                <div id="form"></div>
+                <div class="clear"></div>
+                </div>
+                
+                <ul id="list"> 
+                <li>
+                     <!-- <a href="#/Apple/">Apple</a> -->
+                  <div> <a href="">456</a></div>
+                </li> 
+                <li> <a href="#/Broccoli/">Broccoli</a></li> 
+                <li><a href="#/Carrot/">Carrot</a></li> 
+                <li><a href="#/Celery/">Celery</a></li> 
+                <li> <a href="#/Lettuce/">Lettuce</a></li> 
+                <li> <a href="#/Mushroom/">Mushroom</a></li> 
+                <li> <a href="#/Onion/">Onion</a></li> 
+                <li> <a href="#/Onion/">123</a></li> 
+                <li> <a href="#/Onion/">啊发发</a></li> 
+                </ul> 
+            </div>
+
+
+        <script src="./jquery-3.3.1.min.js"></script> 
+        <script> 
+        (function ($) {
+        jQuery.expr[':'].Contains = function(a,i,m){
+        return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+        };
+        function filterList(header, list) { 
+        var form = $("<form>").attr({"class":"filterform","action":"#"}),
+        input = $("<input>").attr({"class":"filterinput","type":"text"});
+        $(form).append(input).appendTo(header);
+        
+        $(input).change( function () {
+        var filter = $(this).val();
+        if(filter) {
+        $matches = $(list).find('a:Contains(' + filter + ')').parent();
+        $('li', list).not($matches).slideUp();
+        $matches.slideDown();
+        } else {
+        $(list).find("li").slideDown();
+        }
+        return false;
+        })
+        .keyup( function () {
+        $(this).change();
+        });
+        }
+        $(function () {
+        filterList($("#form"), $("#list"));
+        });
+        }(jQuery));
+        </script> 
+</body>
+</html>
