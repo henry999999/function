@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+</head>
+<body>
+	<div id="x" class="validateContainer">
+        <input name="xx" class="required"/>
+        <input name="aa" class="required"/>
+        <a class="submit" />submit</a>
+    </div>
+
+    <div id="xx" class="validateContainer">
+        <input name="bb" class="required"/>
+        <input name="vvv" class="required"/>
+        <a class="submit" />submit</a>
+    </div>
+    <video id="video" width="640" height="480" autoplay></video>
+<button id="snap">Snap Photo</button>
+<canvas id="canvas" width="640" height="480"></canvas>
+    <!-- <script src="./js/jquery.min.js"></script> -->
+    <!-- <script src="jquery.validate1.js"></script> -->
+    <script src="jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.validate.js"></script>
+</body>
+<script>
+    $('.submit').on('click',function(){
+        $(this).closest(".validateContainer").valid();
+    	console.log($(this).closest(".validateContainer").valid());
+    })
+     var newitem = $('<div class="maxvision_dropdown"><div class="mui-scroll-wrapper"><div class="mui-scroll"><ul class="ulitem"></ul></div></div></div>');
+     newitem.find(".ulitem").append('<li data-id="1">1</li>');
+     console.log(newitem.find("ul"));
+
+     var aVideo=document.getElementById('video');
+                var aCanvas=document.getElementById('canvas');
+                var ctx=aCanvas.getContext('2d');
+                
+                navigator.getUserMedia  = navigator.getUserMedia ||
+                          navigator.webkitGetUserMedia ||
+                          navigator.mozGetUserMedia ||
+                          navigator.msGetUserMedia;//获取媒体对象（这里指摄像头）
+              navigator.getUserMedia({video:true}, gotStream, noStream);//参数1获取用户打开权限；参数二成功打开后调用，并传一个视频流对象，参数三打开失败后调用，传错误信息
+                
+                function gotStream(stream) {
+                        video.src = URL.createObjectURL(stream);
+                        video.onerror = function () {
+                          stream.stop();
+                        };
+                        stream.onended = noStream;
+                        video.onloadedmetadata = function () {
+                          alert('摄像头成功打开！');
+                        };
+                }
+                function noStream(err) {
+                        alert(err);
+      }
+      document.getElementById("snap").addEventListener("click", function() {
+                
+                ctx.drawImage(aVideo, 0, 0, 640, 480);//将获取视频绘制在画布上
+});
+</script>
+</html>

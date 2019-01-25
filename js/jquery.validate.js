@@ -12,6 +12,11 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  */
+$(function() {
+    jQuery.browser = {};
+    //修复1.9以上版本没有msie这个方法导致的js问题
+    jQuery.browser.msie = !+"\v1";
+});
 
 (function($) {
 $.extend({
@@ -310,7 +315,7 @@ $.extend($.validator, {
 	setDefaults: function(settings) {
 		$.extend( $.validator.defaults, settings );
 	},
-	language:lang, //语言设置
+	language:"en", //语言设置
 	
 	messages: {//校验 length的配合chartype使用，chartype="char"则=varchar2，无chartype则=nvarchar2
 			"en":{
